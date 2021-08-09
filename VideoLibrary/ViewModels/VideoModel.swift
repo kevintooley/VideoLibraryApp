@@ -10,28 +10,51 @@ import Foundation
 class VideoModel: ObservableObject {
     
     @Published var videos = [Video]()
+    var allVideos = [Video]()
     
     init() {
         
         getRemoteData()
+        //self.getData()
         
     }
     
-    getRemoteData() {
+    func getData() {
+        
+        guard let url = URL(string: "https://kevintooley.github.io/learning_pages/Data.json") else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let data = data, let videos = try? JSONDecoder().decode([Video].self, from: data) {
+
+                self.allVideos = videos
+
+                DispatchQueue.main.async {
+                    self.videos = videos
+                }
+
+            }
+        }
+        .resume()
+        
+    }
+    
+    func getRemoteData() {
         
         // set string
-        let urlString = "https://codewithchris.github.io/Module5Challenge/Data.json"
+        //let urlString = "https://codewithchris.github.io/Module5Challenge/Data.json"
+        let urlString = "https://kevintooley.github.io/learning_pages/Data.json"
         
         // set url
-        let url = URL(string: urlString)
+        let remoteUrl = URL(string: urlString)
         
         // guard url
-        guard url != nil else {
+        guard remoteUrl != nil else {
             return
         }
         
         // create request
-        let request = URLRequest(url: url!)
+        let request = URLRequest(url: remoteUrl!)
         
         // create session
         let session = URLSession.shared
@@ -44,19 +67,19 @@ class VideoModel: ObservableObject {
                 return
             }
             
-            // create decoder
-            let decoder = JSONDecoder()
-            
             do {
+                
+                // create decoder
+                let decoder = JSONDecoder()
 
                 // decode
-                let modules = try decoder.decode([Video].self, from: data!)
+                let videos = try decoder.decode([Video].self, from: data!)
                 
                 // dispatchQueue main
                 DispatchQueue.main.async {
                     
                     // append to videoModel
-                    self.videos += modules
+                    self.videos += videos
                     
                 }
             }

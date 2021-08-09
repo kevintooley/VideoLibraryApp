@@ -14,6 +14,7 @@
 		3425535A26C08F6C004BAE1F /* VideoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3425535926C08F6C004BAE1F /* VideoPageView.swift */; };
 		3425535C26C093A3004BAE1F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3425535B26C093A3004BAE1F /* Video.swift */; };
 		3425535E26C0941D004BAE1F /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3425535D26C0941D004BAE1F /* VideoModel.swift */; };
+		3425536126C0BC64004BAE1F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3425536026C0BC64004BAE1F /* AVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3425535926C08F6C004BAE1F /* VideoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPageView.swift; sourceTree = "<group>"; };
 		3425535B26C093A3004BAE1F /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		3425535D26C0941D004BAE1F /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		3425536026C0BC64004BAE1F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3425536126C0BC64004BAE1F /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 			children = (
 				3425534526C08E2D004BAE1F /* VideoLibrary */,
 				3425534426C08E2D004BAE1F /* Products */,
+				3425535F26C0BC64004BAE1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +112,14 @@
 			children = (
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		3425535F26C0BC64004BAE1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3425536026C0BC64004BAE1F /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

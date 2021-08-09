@@ -12,6 +12,7 @@ struct VideoLibraryApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(VideoModel())
         }
     }
 }
