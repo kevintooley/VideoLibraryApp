@@ -14,9 +14,13 @@ class VideoModel: ObservableObject {
     
     init() {
         
-        getRemoteData()
-        //self.getData()
+        //getRemoteData()
+        getData()
         
+    }
+    
+    func filterVideos(_ searchText: String) {
+        videos = allVideos.filter({ searchText.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(searchText) })
     }
     
     func getData() {

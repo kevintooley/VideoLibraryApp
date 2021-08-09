@@ -11,11 +11,15 @@ struct HomeView: View {
     
     @EnvironmentObject var model: VideoModel
     
+    @State private var searchText = ""
+    
     var body: some View {
         
         NavigationView {
             
             List {
+                
+                SearchBar(text: $searchText)
 
                 ForEach (0..<model.videos.count, id: \.self) { index in
                     
@@ -28,8 +32,11 @@ struct HomeView: View {
                     
                 }
                 
-            }.navigationBarTitle(Text("All Videos"))
-            
+            }
+            .navigationBarTitle(Text("All Videos"))
+            .onChange(of: searchText) { text in
+                model.filterVideos(text)
+            }
         }
         
     }
